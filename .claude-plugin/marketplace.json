@@ -1,0 +1,22 @@
+{
+  "name": "leo-skills",
+  "owner": {
+    "name": "Leo Maia Jr",
+    "email": "leomaiajr@hotmail.com"
+  },
+  "metadata": {
+    "description": "Leo's custom Claude Code skills",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "leo-skills",
+      "description": "Collection of custom skills including leo-wiggum for autonomous AI coding loops",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/leo-wiggum"
+      ]
+    }
+  ]
+}
