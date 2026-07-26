@@ -6,16 +6,17 @@
   },
   "metadata": {
     "description": "Leo's custom Claude Code skills",
-    "version": "2.0.0"
+    "version": "2.1.0"
   },
   "plugins": [
     {
       "name": "leo-skills",
-      "description": "Collection of custom skills including leo-wiggum for autonomous AI coding loops with phased execution, browser validation, and quality ratcheting",
+      "description": "Collection of custom skills: leo-wiggum for autonomous AI coding loops with phased execution, browser validation, and quality ratcheting; grok-x-research for live X (Twitter) and web research through the Grok CLI",
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/leo-wiggum"
+        "./skills/leo-wiggum",
+        "./skills/grok-x-research"
       ]
     }
   ]
