@@ -63,3 +63,31 @@ not read off docs:
   turns the identical query into a fully cited multi-agent report.
 - `FS_PERMISSION_DENIED` recovery, including why relocating `GROK_HOME` with only
   `auth.json` turns a fast error into a silent multi-minute hang.
+
+### orchestrating-codex
+
+Decides when a coding task should be handed to Codex/GPT instead of ground through
+in-house, and how to run the handoff. Claude is the tech lead; Codex is the
+implementer and the reviewer.
+
+**Usage:** triggers on its own when delegation is on the table:
+- "Two fixes failed — get a second diagnosis"
+- "Implement this across the auth files"
+- "Review this diff before I open the PR"
+
+**Requires** the `codex@openai-codex` plugin, authenticated.
+
+**What it encodes:**
+
+- What the lead never delegates — framing, approach, acceptance, the user
+  relationship — versus what goes to Codex.
+- The keep-in-house list: document/PDF/extraction analysis (routes to Claude/Opus),
+  anything needing MCP tools (the Codex runtime is Bash-only), and edits cheaper
+  than the handoff.
+- Handoff shape: Codex reads the repo's `AGENTS.md` / `CLAUDE.md` natively, so
+  pasting project invariants into the prompt is waste.
+- Two review layers with different jobs — the stop review gate (catches defects,
+  runs unasked) and `/codex:adversarial-review` (catches wrong designs, must be
+  user-invoked).
+- Receiving output: verdicts are evidence, not rulings. Verify each claim, reject
+  invariant violations, and report overrides out loud.
